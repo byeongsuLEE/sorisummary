@@ -234,14 +234,6 @@ function startVisualizer() {
 }
 
 async function startRecordingSession() {
-  // Check API key
-  const apiKey = localStorage.getItem('SORI_API_KEY');
-  if (!apiKey) {
-    alert('Gemini 요약을 사용하기 위해 먼저 [우측 상단 설정 ⚙️]에서 Google AI Studio API Key를 등록해 주세요!');
-    modalSettings.classList.add('active');
-    return;
-  }
-
   // Setup Title
   const defaultDate = new Date();
   const dateStr = defaultDate.toLocaleDateString('ko-KR', {
@@ -318,12 +310,7 @@ async function stopRecordingSession() {
 
 // --- 6. AI ANALYSIS PIPELINE ---
 async function triggerAIAnalysis(meeting) {
-  const apiKey = localStorage.getItem('SORI_API_KEY');
-  if (!apiKey) {
-    alert('API Key가 없어 분석을 생략합니다. 설정을 완료한 후 대화록 탭 하단에서 다시 실행해 주세요.');
-    renderMeetingDetailOffline(meeting);
-    return;
-  }
+  const apiKey = localStorage.getItem('SORI_API_KEY') || '';
 
   // UI Setup
   analysisLoadingPanel.style.display = 'flex';
@@ -683,11 +670,7 @@ function setupEventListeners() {
 
   // Re-run 요약
   btnTriggerSummarize.addEventListener('click', async () => {
-    const apiKey = localStorage.getItem('SORI_API_KEY');
-    if (!apiKey) {
-      alert('설정에서 API Key를 입력하세요.');
-      return;
-    }
+    const apiKey = localStorage.getItem('SORI_API_KEY') || '';
 
     if (confirm('현재 수정된 대화록 내용을 바탕으로 AI 요약본을 다시 작성하겠습니까?')) {
       // Construct raw script text from current transcript array
