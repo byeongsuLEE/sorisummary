@@ -1,0 +1,22 @@
+{
+  "short_name": "소리요약",
+  "name": "SoriSummary: 회의 녹음 & AI 요약기",
+  "description": "서버 없이 내 폰에서 안전하고 무료로 화자가 구분된 회의록과 요약을 만드세요.",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#0d1117",
+  "theme_color": "#10b981",
+  "display": "standalone",
+  "orientation": "portrait"
+}
